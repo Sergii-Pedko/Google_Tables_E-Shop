@@ -1,0 +1,436 @@
+/* html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {         
+  padding: 0;  
+  border: 0; 
+  margin: 0;
+  
+  font-size: 100%;
+  font: inherit; 
+  /*vertical-align: baseline;*/
+/* } 
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}  - ВСЕ ЭТО ПЛДКЛЮЧЕНО В BOOTSTRAP !!!!!*/  
+
+/*________________________________________________*/
+body { 
+
+  margin: 0; /* для Bootstrap - ОБЯЗАТЕЛЬНО */
+  
+   /* font-family: Verdana, sans-serif, 'Times New Roman', Arial; */
+   font: 14px/22px Arial;  /* размер – 14px, межстрочный интервал – 22px */
+   font-weight: 400; /*normal или Regular*/
+   font-style: normal;
+   font-size: 14px;
+   /* line-height: 16px; */
+   color: black; 
+
+   background-image: url(../img/bg.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+/*___________________________________________________________________ */
+}
+
+* {
+  box-sizing: border-box; /* для Bootstrap - ОБЯЗАТЕЛЬНО */
+}
+
+a {
+  text-decoration: none; /*убрали подчеркивание*/
+  display: inline-block; /*строчно-блочная*/
+  color: #0083df;
+}
+
+ul, li {
+  list-style: none; /*Удаление маркеров нумерации*/
+}
+/*_____________________________________________________________________*/
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 15px; /*чтобы контейнер не прилипал к стенкам ГАДЖЕТОВ
+                    на малой ШИРИНЕ (меньше 1920)*/
+
+  /*background-color:#CEF6F5; */
+  /*height: 100vh;*/
+ }
+/*______________________________________________________________________*/
+.header{
+  /* min-height: 20px; Высота блока - row */
+   margin-bottom: 10px; /*Отступ вниз до следующего блока*/
+   /* border: 3px solid red; */
+  }
+ 
+.block{
+  /* background-color: rgb(221, 255, 127); */
+
+
+  /* Цеттровка по гризонтали и вертикали */
+
+  /* text-align: center; - можно прописать text-center (Bootstrap) в блок <div class="block text-center"> - это то же самое*/
+  padding: 10px;
+   /*height: 100%; от РОДИТЕЛЯ -col */
+  /* font-size: 17px; */
+  /* line-height: 18px; */
+
+  /* border: 3px solid blue; */
+}
+
+/* .rw {
+  border: 3px solid blue;
+} */
+
+/* .col {
+  border: 1px solid red;
+  /* background-color: aquamarine; 
+} */
+
+.desc{ /* чтобы описания товара были в одинаковом блоке - тогда кнопка "В корзину" - У ВСЕХ ТОВАРОВ НА ОДИНАКОВОМ УРОВНЕ*/
+  height: 20px;
+  width: 100%;
+  /* border: 1px solid red; Проверочка */
+}
+/*--------------------------------------------------ШАПКА----------------------------------------------------*/
+.logo {   /*Эти свойства должны применяться только для тех классов (блоков), которые лежат именно в шапке, 
+  т.е. в блоке <div id="header"></div>, поэтому здесь мы добавим перед стилями (.logo и .contacts) 
+  контекстные селекторы*/
+margin-top: 3rem;
+margin-left: -2rem;
+
+}
+
+.htc{/*Выравниваем по центру блока (text-centre) уже задан  */
+  line-height: 4rem;
+  font-size: 1rem;
+}
+
+
+.contacts p {  /* Cвойства только для абзацев класса (contacts), который лежат именно в блоке (id="header)*/
+font: bold 16px/14px Arial;
+color: rgb(39, 15, 15);
+}
+
+.green {
+color: #118811;
+}
+
+.gray {
+color: #666666;
+}
+
+.blue {
+  color:#0083df
+}
+
+.contacts p .green {
+font-size: 14px;
+font-weight: lighter; /*font-weight: bold|bolder|lighter|normal|100|200|300|400|500|600|700|800|900
+Насыщенность шрифта задаётся с помощью ключевых слов: bold — полужирное начертание, 
+normal — нормальное начертание. Также допустимо использовать условные единицы от 100 до 900. 
+Значения bolder и lighter изменяют жирность относительно насыщенности родителя, соответственно, 
+в большую и меньшую сторону. 
+(Унас родитель - Абзац <p> в слассе (contacts) имееет жирный шрифт-font: bold 18px/14px Arial; 
+мы ссответственно делвем его менее жирным(а можно было поставить и normal)*/
+}
+
+.contacts p .gray {
+font-size: 12px;
+font-weight: normal;
+}
+
+/*--------------------------------------------------КАТЕГОРИИ ТОВАРОВ----------------------------------------------------*/
+
+.block-one {
+  /* background-color: white; */
+  margin-bottom: 20px; 
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+    /*смещение ПО ШИРИНЕ| смещение ПОВЫСОТЕ| РАДИУС РАЗМЫТИЯ| РАСТЯЖЕНИЕ| ЦВЕТ ТЕНИ*/
+              /*ЦВЕТ ТЕНИ - задан через rgba(0,0,0,0.25), где 0.25 - полупрозрачность (opacity: 0.25;) - 25 % */ 
+}
+
+.block-one>.header-one {
+  font: bold 16px/16px Arial;
+  color: white;
+  
+  background-color: #41b039;
+  border-radius: 3px 3px 0 0;
+  padding: 10px 10px 10px 35px; 
+}
+
+.block-one.category>.header-one { /*Когда БЛОК ИМЕЕТ ДВА КЛАССА (ИЛИ БОЛЕЕ), то вы можете записать в файле 
+  со стилями либо один селектор класса, либо все вместе без пробелов.*/
+background-image: url(../img/kategory.png);
+background-position: 10px center;
+background-repeat: no-repeat; 
+}
+
+.block-one.category .v-menu>li {
+list-style-type: none; /*Удаление маркеров нумерации*/
+}
+
+.block-one.category .v-menu>li>a { 
+display: block; /* Cсылку- сделаем ее блочным элементом - чтобы ее можно было стилизировать*/
+text-decoration: none; /* уберем подчеркивание*/
+line-height: 14px; /* межстрочный интервал*/
+padding: 10px;
+border-top: 1px solid #ccc;
+}
+.block-one.category .v-menu>li:first-child>a { /* У ссылки ПЕРВОГО пукнта уберем границу сверху*/
+border-top: 0;
+}
+
+.block-one.category .v-menu>li:last-child>a { /* У ссылки ПОСЛЕДНЕГО ПУНКТА*/
+border-radius: 0 0 3px 3px; /* радиус скругления левого ниженего угла и правого нижнего угла*/
+}
+
+.block-one.category .v-menu>li>a:hover { /* /*Псевдокласс: hover -Определяет стиль элемента при наведении на него курсора мыши, но 
+при этом элемент еще не активирован, иными словами кнопка мыши не нажата.*/
+background-color: #f8f8f8;
+color: green;
+} 
+
+.block-one.category .v-menu>li:active>a { /* Псевдокласс:active - Определяет стиль элемента при наведении на него и 
+       УДЕРЖИВАНИИ НАЖАТЫМ курсора мыши (Удобно для клика ПРАВОЙ КЛАВИШИ.*/
+background-color: #f8f8f8;
+color: red;
+} 
+
+/*-------------------------------------------ПОИСК ПО КАТАЛОГУ-----------------------------------------------*/
+ 
+.block-one.search>.header-one {                   /*Когда БЛОК ИМЕЕТ ДВА КЛАССА (ИЛИ БОЛЕЕ), то вы можете записать в файле 
+  со стилями либо один селектор класса, либо все вместе без пробелов.*/
+background-image: url(../img/search.png);
+background-position: 10px center;
+background-repeat: no-repeat; 
+}
+
+input,button,textarea {
+display: inline-block; /*Это значение генерирует блочный элемент, который обтекается другими элементами 
+веб-страницы подобно встроенному элементу.*/
+
+box-sizing: border-box; /*Свойство box-sizing позволяет чтобы свойства width и height 
+задавали размеры не контента, а размеры блока.
+В НОРМАЛЬНОМ СЛУЧАЕ: width + (padding + border + margin будут за пределами блока)
+В ДАННОМ СЛУЧАЕ: width + padding + border + (margin будет за пределами блока)*/
+
+border-radius: 3px;
+} 
+
+input[type="text"] { /*Для текстового поля в форме*/
+box-shadow: inset 0 2px 3px rgba(0,0,0,0,0.13);
+height: 35px;
+padding: 0 4px;
+border: 2px solid #ccc;  
+}
+
+input[type="text"]:focus { /*Псевдокласс :focus определяет стиль для элемента получающего фокус. 
+Например, им может быть текстовое поле формы, в которое устанавливается курсор.*/
+outline: none; /*Универсальное свойство, одновременно устанавливающее цвет, 
+стиль и толщину внешней границы на всех четырех сторонах элемента.
+outline: 1px solid #666; /* Параметры рамки */
+}
+
+button {
+background-image: linear-gradient(to bottom, #f5f5f5, #ddd); /*Градиентом называют плавный переход от одного цвета
+(в начале пишется позиция,                                                                               к другому
+от которой будет начинаться градиент to top,|начальный,|и конечный цвет); */                           
+background-repeat: repeat-x;
+font-size: 14px;
+line-height: 12px;
+border: 1px solid #c7c7c7;
+padding: 5px; 
+cursor: pointer;   /*При наведении на объект - курсор со стрелки меняется на РУКУ,  - 
+появляющейся при наведении на ссылку*/
+}
+
+button.green {
+background-color: #41b039; 
+background-image: linear-gradient(to bottom, #4ecf44, #41b039);                       
+border: 0;
+color: white; /*Цвет текста на кнопке*/
+}
+
+button:hover {
+background-position: 0 -25px; /*т.к. цвет фона был задан ГРАДИЕТНОМ - ЕСЛИ ЕГО СДВИНУТЬ, ТО ПОМЕНЯЕТСЯ ОТТЕНОК*/
+}
+
+.description {
+color: #0083df;
+font-size: 12px;
+line-height: 12px;
+padding-bottom: 10px; 
+}
+
+.block-one.search form {
+position: relative; /* Задаём блоку относительное позиционирование для того, чтобы затем РАЗМЕЩАТЬ, В НЕМ 
+ДРУГИЕ элементы  - КНОПКУ*/
+}
+/* Для текстового поля установим ширину в 100%, чтобы оно растягивалось на все ширину блока, в котором 
+находится. Установим отступ справа, чтобы текст не исчезал под кнопкой, и отступ снизу от поля:*/
+.block-one.search form>input {
+width: 100%;
+padding-right: 57px;
+margin-bottom: 4px; 
+}
+
+.block-one.search form>button { 
+position: absolute;  /* Позиционируем абсолютно кнопку, относительно границ формы.  -т.е. поверх ФОРМЫ.
+Строчные элементы из общего потока НЕ обтекают АБСОЛЮТНОПОЗИЦ элемент.
+Они вообще НЕ ОБРАЩАЮТ ВНИМАНИЕ на то, что это элемент находится на странице.
+ОН КАК БЫ НАХОДИТСЯ СВЕРХУ НАД НИМИ.*/
+right: 4px;
+top: 5px;
+height: 25px;
+font-size: 14px;
+line-height: 14px;
+padding: 5px;
+box-shadow: none;
+} 
+
+.hide-goods{display: none;}
+
+/*--------------------------------------------------КОРЗИНА--------------------------------------------------*/
+/*т.к. классы прописаны (в HTML) ОДИНАКОВЫЕ для КОРЗИНЫ - ПОИСКА ПО КАТЛОГУ и ВЕРТИКАЛЬНОЕ МЕНЮ, то cв-ва в:
+.block>.header {}
+.block>.content {}
+ .block>.content p {} ДЛЯ НИХ ОДИНАКОВЫЕ*/
+
+ .block-one>.header-one {
+  font: bold 16px/16px Arial;
+  color: white;
+  
+  background-color: #41b039;
+  border-radius: 3px 3px 0 0;
+  padding: 10px 10px 10px 35px; 
+}
+
+.block-one.basket-one>.header-one {                   /*Когда БЛОК ИМЕЕТ ДВА КЛАССА (ИЛИ БОЛЕЕ), то вы можете записать в файле 
+                                            со стилями либо один селектор класса, либо все вместе без пробелов.*/
+  background-image: url(../img/baskcet.png);
+  background-position: 10px center;
+  background-repeat: no-repeat; 
+}
+
+.block-one>.content-one {
+  padding: 10px;
+}
+  
+.block-one>.content-one p {
+  margin-bottom: 0;
+  line-height: 20px;
+}
+
+.btn-pdng{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.basket>li {border-bottom: 1px solid blueviolet;}
+
+/*__________________________________FOOTER___________________________________*/
+
+.footer__content {
+  /* background-color:  #595959; */
+  background-color:   #41b039;
+  padding: 20px 0px 30px 0px;
+  /*opacity: 0.75;  Прозрачность 50 % */ 
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.25);
+}
+
+.footer__content-map {
+  /* background-color:  #595959; */
+  padding: 20px 0px 30px 0px;
+}
+
+
+.container-one {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;  /*чтобы контейнер не прилипал к стенкам ГАДЖЕТОВ
+                    на малой ШИРИНЕ (меньше 1170)*/
+}
+
+
+.footer__map {
+  padding-top: 10px;
+
+  /* max-width: 630px; */
+  /*width: 100% иначе ШИРИНА МОЖЕТ НЕ ПРИМЕНИТЬСЯ*/
+}
+
+.footer__map iframe {
+  width: 100% 
+
+  /*ЕСЛИ КАРТА НЕ РАСШИРЯЕТСЯ ДО НУЖНЫХ РАЗМЕРОВ - ЗАДАЕМ В HTML <iframe>*/
+}
+
+.footer__title {
+  /* font-family: 'Roboto', sans-serif;  */
+  font-weight: 500; 
+  font-size: 16px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+  color: #fff; 
+  padding-bottom: 20px; 
+}
+.footer__text {
+  color: #fff; 
+  padding-bottom: 20px; 
+}
+
+.footer__list {
+  padding-top: 10px;
+}
+
+.footer__list li {
+  padding-top: 10px;
+}
+
+.footer__list li a {/* Если задать эти параметры в .footer__list li
+  ЦВЕТ НЕ ПОМЕНЯЕТСЯ!!!*/
+  /* font-family: 'Roboto', sans-serif;  */
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  color: #fff; 
+
+  padding-left: 20px; /*Резервируем место для иконок (по Ps)*/
+}
+
+
+/*________________________________________________________________________*/
+.footer__copy {
+  background-color: #303030;
+}
+
+.copy__text {
+  font-weight: 400; 
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #fff; 
+
+  /* text-align: center; прописано в Bootstrap */
+  padding: 8px 0px;
+  /*Высота по Ps = 40; 40 - (line-height:24px) = 16;
+  16 / 2  = padding: 8px */
+}
+
+

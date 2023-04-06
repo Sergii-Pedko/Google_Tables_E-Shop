@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Google-Tables</title>
+
+  <!--<link rel="stylesheet" type="text/css" href="../../bootstrap-5.2.0/css/bootstrap.css"> Cначала bootstrap-5(есть баги) -->
+
+    <!-- bootstrap-4 (рабочий) - cdn CSS only -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="css/shop.css"><!-- Ниже свой CSS -->
+</head>
+<body>
+  <main class="wrapper">
+    <div class="container">
+      <header class="header row rw"><!--РЯД (row) разбит на 1 СТОЛБЕЦ(col) - ЗАНИМАЮЩИЙ ВСЮ ДЛИННУ СТРАНИЦИ-->
+        <div class="col-md-5 col">
+          <div class="block">
+            <img class="logo" src="img/logo.png"> <!--Tак как логотипы в шапке обычно являются ссылками, ведущими на главную страницу, то этот тег мы заключим между тегами <a href="папка/index.html"></a>. А так как логотип - это рисунок, то пропишем путь к изображению при помощи тега <img src="" alt="">.-->
+          </div>
+        </div>
+        <div class="col-md-3 text-center col">
+          <div class="block htc">
+            <span class="green"><b>Добро пожаловать в наш Internet-Shop!</b></span>
+          </div>
+        </div>
+        <div class="col-md-4 text-right col">
+          <div class="block contacts">
+            <p><span class="green">Телефоны:</p>
+            <p>063 60 66 925<br></p> 
+            <!--Установка разрывов строк (Обрезание текста в строке) -<br> -->
+            <p>067 461 37 37<br><span class="gray">звонок бесплатный</span></p> 
+
+            <p><span class="green">E-mail:</span> Sergey.pedko123@ gmail.com</p>
+            <!--Элемент <span> дают возможность выделить СТРОЧНОЕ СОДЕРЖИМОЕ, аналогично тому, как
+            Элемент <div> логически выделяет блочные элементы -Для того, чтобы эти классы ("green" и "gray" )
+            отформатировать в CSS -->   
+            <p>
+              <a href="https://t.me/SergiiPedko" target=" blank"><img src="img/telegram.png"></a>
+              <!-- target=" blank" необходим чтобы ссылка открылась в НОВОМ ОКНЕ-->
+              <a href="https://invite.viber.com/?g2=AQAAdlw6pH1N20%2Bkck7zzYx2xcWV7%2FgJ69kLtEV4tYuBMtSVyMFuKlkv9r851BWJ"
+              target=" blank"><img src="img/viber.png"></a>
+              <!--Иконки социальных сетей являются ссылками, поэтому их мы добавили между тегами <a href=""></a> -->
+              <a href="https://www.facebook.com/profile.php?id=100011120167660&ref=bookmarks" 
+              target=" blank"><img src="img/fb.png"></a>
+            </p>   
+          </div>
+        </div>
+      </header>
+      <!-- ______________________________________________________________________________________________________________ -->
+      <section class="header row rw">
+        <div class="col-md-12 text-left col">
+              <div class="block">
+                  <div class="footer__content">
+                    <div class="container-one">
+                          <div class="footer__title">Как оформить заказ?</div>
+                          <ul class="footer__list">
+                            <li class="footer__phone"><img src="img/phone_call.png" alt="phone"><a  href="tel:380636066925">Оставьте заявку на сайте или по телефону +38 (063) 60 66 925</a></li>
+                            <li><img src="img/connection.png" alt="mail"><a href="#">С Вами свяжется менеджер для подтверждения заказа</a></li>
+                            <li><img src="img/money.png" alt="location"> <a class="footer__adress" href="#">Выбирайте удобную для Вас форму оплаты – оплата на карту или наложенный платеж</a></li>
+                            <li><img src="img/delivery.png" alt="location"> <a class="footer__adress" href="#">Получите товар в ближайшем отделении «Новой Почты»</a></li>
+                          </ul>
+                    </div>
+                  </div>
+              </div>
+        </div>
+      </section>
+
+      <section class="header row rw">
+        <div class="col-md-4 text-center col">
+
+          <section class="header row rw">
+            <div class="col-md-12 text-left col">
+              <div class="block">
+                <div class="block-one search"> <!--Поиск по Каталогу-->
+                  <div class="header-one">Поиск по каталогу</div>
+                  <div class="content-one">
+                    <form>
+                      <input type="text" class="elastic">
+                      <p class="description">Ведите название товара</p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="header row rw">
+            <div class="col-md-12 text-left col">
+              <div class="block">
+                <div class="block-one basket-one"> <!--Корзина-->
+                  <!--здесь задано ДВА ОТДЕЛЬНЫХ КЛАССА (.block) и ИЧЕРЕЗ ПРОБЕЛ (dаsket)-->
+                    
+                    <div class="header-one">Корзина</div>
+                    <div class="content-one">
+                      
+                      <ul class="basket"></ul> <!--Вывод КОРЗИНЫ сюда-->
+                      <div class="total"></div> <!--Вывод ИТОГО по ВСЕМ ПОЗИЦИЯМ КОРЗИНЫ-->
+                      <hr>
+                      <div>Ф.И.О:  <p><input type="text" id="customer-name"></p></div>
+                      <div>Email: <p><input type="text" id="customer-email"></p></div>
+                      <div>Телефон: <p><input type="text" id="customer-phone"></p></div>
+                      <hr>
+                      <div><textarea placeholder="Ваш вопрос" id="customer-question" cols="23" rows="10"></textarea></div>
+            
+                      <input type="button" value="Купить" id="buy" name="buy" class="btn btn-secondary">
+                      <hr>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section class="header row rw">
+            <div class="col-md-12 text-left col">
+              <div class="block">
+                <div class="block-one category"> <!--Категории товаров-->
+                  <div class="header-one">Категории товаров</div>
+                  <ul class="v-menu">
+                    <li><a href="#">Мобильные телефоны</a></li>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Телевизоры</a></li>
+                    <li><a href="#">Комплектующие</a></li>
+                    <li><a href="#">Детские игрушки</a></li>
+                    <li><a href="#">Конструкторы</a></li>
+                    <li><a href="#">Сатехника</a></li>
+                    <li><a href="#">Строительный инструмент</a></li>
+                    <li><a href="#">Краски</a></li>
+                    <li><a href="#">Одежда</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+                      
+        </div>
+
+        <div class="col-md-8 text-center col">
+          <section class="shop-field row rw">
+              <!--На самом маленьком экране (Mobile-first) - СТОЛБЕЦИ(col) - растоложены ОДИН ПОД ДРУГИМ. Расширяя экран - с контрольной точки sm СТОЛБЕЦ разбивается на 2 ячейки (col-sm-2); С контрольной точки md и потом lg СТОЛБЕЦ разбивается на 3 ячейки(col-md-3; col-lg-3)-->
+
+          <!--  Блоки такой структуры - необходимо выводить на экран при помощи js. 
+          
+                    <div class="goods">
+                        <p>Яблоки</p> 
+                        <p><img src="https://cdn0.iconfinder.com/data/icons/fruits/128/Apple.png"></p>
+                        <p>Цена:25 грн/кг</p>  
+                        <p>На складе:2 кг</p>  
+                        <p><input class="btn btn-success" type="button" value="Купить" data="${id}"></p> 
+                      </div>
+                    </div> -->
+          </section>
+       
+        </div>
+      </section>
+
+      
+      <footer class="header row rw"><!--РЯД (row) разбит на 1 СТОЛБЕЦ(col) - ЗАНИМАЮЩИЙ ВСЮ ДЛИННУ СТРАНИЦИ-->
+        <div class="col-12 col-md-6 col-lg-5 col">
+          <div class="block">
+              <div class="footer__content">
+                <div class="container-one">
+                      <div class="footer__title">Internet-Shop на карте</div>
+                      <div class="footer__text">
+                        Только качественная продукция от проверенных временем поставщиков.
+                      </div>
+       
+                      <ul class="footer__list">
+                        <li><img src="img/phone.png" alt="phone"><a class="footer__phone" href="tel:380636066925">+38 (063) 60 66 925</a></li>
+                        <li><img src="img/email.png" alt="mail"><a href="#">Sergey.pedko123@ gmail.com</a></li>
+                        <li><img src="img/location.png" alt="location"> <a class="footer__adress" href="https://map.meta.ua/ru/kiev/#zoom=18&lat=50.46259&lon=30.47845&base=B00" target=" blank">Киев, ул.Белорусская, 3</a></li>
+                      </ul>
+                </div>
+              </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-7 text-center col">
+          <div class="block">
+              <div class="footer__content-map">
+                <div class="container-one">                  
+                    <div class="footer__map">  
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.843472872032!2d30.478508700000003!3d50.4626394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce78e44d6149%3A0xd21bf59025855a7c!2z0YPQuy4g0JHQtdC70L7RgNGD0YHRgdC60LDRjywgMywg0JrQuNC10LIsIDAyMDAw!5e0!3m2!1sru!2sua!4v1660832346291!5m2!1sru!2sua" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                      <!-- убрал width="630" исправляем .footer__map и .footer__map iframe-->
+                    </div>
+                </div>
+              </div>              
+          </div>
+        </div>        
+      </footer>
+    
+      <section class="header row rw">
+        <div class="col-md-12 text-center col">
+          <div class="block">
+              <div class="footer__copy">
+                <div class="container-one">
+                  <div class="copy__text">
+                    © 2022 Developed by SERGEY PEDKO "SimpleWeb™". Sergey.pedko123@gmail.com All rights reserved.
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <script src="shop/shop.js"></script>
+</body>
+</html>
