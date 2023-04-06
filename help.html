@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helper</title>
+
+  <link rel="stylesheet" type="text/css" href="../../bootstrap-5.2.0/css/bootstrap.css"><!-- Cначала bootstrap -->
+
+  <link rel="stylesheet" type="text/css" href="css/shop.css"><!-- Ниже свой CSS -->
+</head>
+<body>
+  <main class="wrapper">
+    <div class="container"><!--container - имееет 2 РЯДА (row)-->
+      <div class="header row"><!--РЯД (row) разбит на 1 СТОЛБЕЦ(col) - ЗАНИМАЮЩИЙ ВСЮ ДЛИННУ СТРАНИЦИ-->
+        <div class="col-lg-12">
+          <div class="block text-center"><b>Помощь, для понимания разработки Internet-Shop</b></div><!--В bootstrap Блоки встроеттные в столбцы имеют от них отступы автоматом-->
+        </div>
+      </div>
+      <div class="header row"><!--РЯД (row) разбит на 1 СТОЛБЕЦ(col) - ЗАНИМАЮЩИЙ ВСЮ ДЛИННУ СТРАНИЦИ-->
+        <div class="col-lg-12">
+          <div class="block text-center"><b>Корзина</b></div><!--В bootstrap Блоки встроеттные в столбцы имеют от них отступы автоматом-->
+
+          <ul class="ul1" style="border-bottom: 1px solid blueviolet;"></ul> <!--Вывод Объекта human - в лоб -->
+          <ul class="ul2" style="border-bottom: 1px solid blueviolet;"></ul> <!--Вывод Вложенного объекта в Объект human -Метод for-in - Перебираем Объект -->
+        </div>
+      </div>
+
+      <section class="header row rw">
+        <div class="col-md-4 text-left col">
+          <div class="block">
+            <div class="block-one search"> <!--Поиск по Каталогу-->
+              <div class="header-one">Поиск по каталогу</div>
+              <div class="content-one">
+                <form>
+                  <input type="text" class="elastic">
+                  <button>Найти</button>
+                  <p class="description">Ведите название товара</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr>
+
+      <section class="shop-field header row rw">
+       
+        <!-- Блоки такой структуры - необходимо выводить на экран при помощи js. 
+
+        <div class="col-md-12 text-center col">
+            <div class="goods">
+              <p>Яблоки</p> 
+              <p><img src="https://cdn0.iconfinder.com/data/icons/fruits/128/Apple.png"></p>
+              <p>Цена:25 грн/кг</p>  
+              <p>На складе:2 кг</p>  
+              <p><input class="btn btn-success" type="button" value="Купить" data="${id}"></p> 
+            </div>
+        </div> -->
+
+         <style>.hide{display: none;}</style>
+
+      </section>
+      <hr>
+
+    </div>  
+
+    <p class="desc">Очень сочные</p>
+    <p class="desc">Очень сочные и фкусные</p>
+    <p class="desc">Очень сочные, ну просто прелесть</p>
+  </main>
+<!-- _____________________________________________________________________________________________________________ -->
+
+  <script>
+    //  _______________________Вспоминаем ОБЪЕКТЫ_________________________
+    console.log(`Добавление элементов в Объект при помощи Функции`);
+
+let phone = {
+  // Свойство(ключ)  Значение 
+  //     key:        phone[key]
+       model:        "Nokia", 
+       price:        2000 
+};
+
+// ДОБАВЛЕНИЕ в Объект НОВОЙ ПАРЫ Ключ-Значение (Присвоение новых значений свойствам (объекта-phone))
+phone.country = "Sweden";       // 1 способ.(такая запись в Ф-ЦИЯХ может НЕ РАБОТАТЬ!!!) 
+phone["quantity"] = 25;        // 2 способ (такая запись РАБОТАЕТ в ф-циях). Обращение как к ассоциативному массиву
+
+console.log(phone); // {model: 'Nokia', price: 2000, country: 'Sweden', quantity: 25}
+// ____________________________________________________________________________________________
+
+let phone1 = {}; // Пустой массив
+
+function showPhone1(key) {
+   console.log(key); // Свойство(Ключ)-quantity
+   console.log(phone1[key]);//undefined - Значение свойства-key - ЕЩЕ НЕ ПРИСВОЕНО!!!
+
+   console.log(phone1[key] = 1); // Cвойству-key ПРИСВОЕНО ( = ) ЗНАЧЕНИЕ - 1 =>                                               таким образом мы ДОБАВЛЯЕМ в Объект НОВУЮ ПАРУ Ключ-Значение
+
+   console.log(phone1); // {quantity: 1} - Свойство
+};
+
+//   let phone1 = {
+//            Свойство(ключ)  Значение 
+//                      key:  phone1[key]          
+//                 quantity:  1 
+//            };
+
+showPhone1(`quantity`);
+
+console.log(`*********************************`);
+
+function showPhone2(key) {
+  console.log(phone1[key]); // 1 - предыдущее Значение (стр.99)
+  console.log(phone1[key] = phone1[key] + 1); // 2 - Увеличиваем значение = 1 (предыдущее Значение) + 1
+  console.log(phone1); // {quantity: 2}
+};
+
+//   let phone1 = {
+//                   Свойство(ключ)  Значение 
+//                             key:  phone1[key]          
+//   quantity (добавлено в стр.68):  2
+//            };
+
+showPhone2(`quantity`);
+
+console.log(`*********************************`);
+
+
+// ______________Объединим ОБЕ Ф-ции_______________________________
+
+function addToPhone1(key) { //Ф-ция будет брать объект phone1 = {quantity: 2}
+  if (phone1[key] != undefined) { //Если у объекта  phone - уже есть какое -то Значение ключа (phone1["quantity"] = 2)
+    phone1[key] = phone1[key] + 1; //то мы увеличим это значение на 1 (phone1["quantity"] = 3)
+  } else{
+    phone1[key] = 1; // Если будет введен НОВЫЙ-ключ, то мы добавим новую пару: Ключ - [Значение = 1]
+  };
+  console.log(phone1);
+};
+
+addToPhone1(`quantity`)// phone1 = {quantity: 2}
+addToPhone1(`broken`)  // phone1 = {quantity: 3, broken: 1} - предыдущая пара (quantity: 2)- ОСТАЛАСЬ, ДОБАВИЛАСЬ НОВАЯ пара (broken: 1)
+
+console.log(`**********************************************************************************************`);
+// ________________________________________________________________________________________________________
+
+console.log(`Трансвормация Массва Объектов в => OБЪЕКТ в форме Ключ - Значение`);
+
+let responseData = [
+        // МАССИВ-ОБЪЕКТОВ
+        {
+          // responseData[0]
+          id: 11,
+          articul: "a001",
+          category: "one",
+          name: "Яблоки",
+          image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Apple.png",
+          cost: 12.89,
+          description: "Сочные спелые",
+          kg: 20,
+          show: 1
+        },
+        {
+          // responseData[1]
+          id: 22,
+          articul: "a002",
+          category: "one",
+          name: "Груши",
+          image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Pear.png",
+          cost: 44.99,
+          description: "Очень вкусные",
+          kg: 34,
+          show: 1
+        },
+        {
+          // responseData[2]
+          id: 33,
+          articul: "a003",
+          category: "two",
+          name: "Лимоны",
+          image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Lemon.png",
+          cost: 64.95,
+          description: "Кислые, но прикольные",
+          kg: 543,
+          show: 1
+        },
+        {
+          // responseData[3]
+          id: 44,
+          articul: "a004",
+          category: "two",
+          name: "Вишни",
+          image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Cherry.png",
+          cost: 20.25,
+          description: "Ну просто прелесть",
+          kg: 12,
+          show: 1
+        },
+        {
+          // responseData[4]
+          id: 55,
+          articul: "a005",
+          category: "two",
+          name: "Абрикосы",
+          image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Apricot.png",
+          cost: 66.95,
+          description: "Классные",
+          kg: 77,
+          show: 1
+        } 
+      ];
+
+      console.log(responseData); //  [{...},{...},{...},{...},{...}]
+//responseData[0] {id: 11, articul: "a001", category: "one", cost: 12.89, description: "Сочные спелые", image:"https://.../Apple.png", kg: 20, name: "Яблоки", show: 1}      
+
+console.log(`**********************************************************************************************`);
+
+//                                      id         id         id         id         id
+//  Необходимо преобразовать в OБЪЕКТ: {11: {...}, 22: {...}, 33: {...}, 44: {...}, 55:{...}}
+
+console.log(`Вытащим из Массива - id Абрикосы`);
+
+let idAbr1 = responseData[4].id;
+console.log(`Cпособ №1 - ${idAbr1}`); // 55
+
+let idAbr2 = responseData[4][`id`];
+console.log(`Cпособ №2 - ${idAbr2}`); // 55
+
+// ______________________________________________________________________________________________________
+console.log(`Массив-объектов => в ОБъект-объектов через id`);
+function arrayHelper(arr) {
+  let out = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    let tmp = {};
+    // Добавляем в Объект tmp - элементы (Ключ-Значение)
+    tmp[`articul`] = arr[i][`articul`];
+    tmp[`category`] = arr[i][`category`];
+    tmp[`name`] = arr[i][`name`];
+    tmp[`image`] = arr[i][`image`];
+    tmp[`cost`] = arr[i][`cost`];
+    tmp[`description`] = arr[i][`description`];
+    tmp[`kg`] = arr[i][`kg`];
+    tmp[`show`] = arr[i][`show`];
+
+    console.log(tmp); // Выдаст 5 объектов (1 - по каждому товару) - теперь необходимо ОБЪЕДЕНИТЬ 5 ОБЪЕКТОВ - В ОДИН
+
+    // Добавляем в Объект out - элементы объекта tmp (Ключ-Значение)
+    // out[`id`] = объект tmp 
+    out[arr[i][`id`]] = tmp; // (в цикле для каждого элемента arr[i] входяжего массива)
+
+  };
+  return out;
+};
+
+//let goods = {};
+let goods = arrayHelper(responseData); // Переменной goods присваиваем ВЫПОЛНЕНИЕ ф-ции arrayHelper(responseData)
+console.log(goods, typeof goods); //{11: {…}, 22: {…}, 33: {…}, 44: {…}, 55: {…}} `object`
+
+console.log(`**********************************************************************************************`);
+
+console.log(`Массив-объектов => в ОБъект-объектов через id (СПОСОБ № 2 - Другой синтаксис)`);
+
+let arr1 = [10,20,`John Doe`];
+
+for (let i in arr1) {
+    console.log(i);
+    console.log(arr1[i]);
+  };
+
+function arrayHelper2(array) {
+  let out = {};
+  for (let i in array) {
+    let tmp = {};
+    
+    tmp.name = array[i].name;
+    tmp.image = array[i].image;
+    tmp.cost = array[i].cost;
+
+    console.log(tmp);
+    
+    out[array[i].id] = tmp;
+    
+    
+  };
+  return out;
+
+};
+
+let goodsSecond= arrayHelper2(responseData); // Переменной goods присваиваем ВЫПОЛНЕНИЕ ф-ции arrayHelper(responseData)
+
+console.log(goodsSecond); //{11: {…}, 22: {…}, 33: {…}, 44: {…}, 55: {…}} `object`
+
+console.log(`**********************************************************************************************`);
+// ____________________________________________________________________________________________
+
+console.log(`Вывод на экран сложного OБЪЕКТА(имеем вложенный объект) в форме Ключ - Значение`);
+
+var basket = {// Объект должен быть ТОЛЬКО - Number - Number (иначе ОШИБКА ф-ции showBasket() !!!!!)
+//Свойство(ключ)  Значение 
+//         key:   basket[key]
+//            33: 2, - можно вывести стр. 316 (по аналогичному ключу 33 -объекта goods1)
+              55: 4 // выводим данные по аналогичному ключу 55 -объекта goods1)
+        };
+
+
+        var goods1 = { // Объект должен быть ТОЛЬКО - Number - {Object} ((иначе ОШИБКА ф-ции showBasket() !!!!!)
+                  // ВЛОЖЕННЫЙ ОБЪЕКТ.
+//   Свойство(ключ)    
+//          key:    
+            11: {articul: "a001" },// goods1[key][`articul`] -> "a001"
+
+            22: {category: "one"},// goods1[key][`category]` -> "one"
+
+            33: {description: "Ну просто прелесть"},// goods1[key][`description]` -> "Ну просто прелесть"
+
+            44: {show: 1},// goods1[key][`show]` -> 1
+
+            55: {
+//                         Значение 
+                company: "Укр-Транс-Газ",      // goods1[key][`company`] -> "Укр-Транс-Газ"
+                position: "Главный Экономист", // goods1[key][`position]`-> "Главный Экономист"
+            }
+        };
+
+     function showBasket() {
+      let ul1 = document.querySelector(`.ul1`);
+      let ul2 = document.querySelector(`.ul2`);
+
+      // Метод for-in -                           
+      for(let key in basket){ // Перебираем basket - а выводим данные по аналогичному ключу из объекта goods1 !!!
+
+        console.log(`Ключ - ${key}: Значение - ${basket[key]}`); //Ключ - 55: Значение - 4
+
+//       ul1.innerHTML = `<li>                         
+//                             <p>Параметр из ОБЪЕКТА goods1: ${goods1[key][`description`]}</p>  
+//                         </li>`;  
+
+         ul2.innerHTML =  `<li>                         
+                               <p>Параметр из ОБЪЕКТА goods1: ${goods1[key][`company`]}</p>
+                               <p>Параметр из ОБЪЕКТА goods1: ${goods1[key][`position`]}</p>                     
+                           </li>`;             
+      };              
+    };
+   
+  showBasket();
+
+  console.log(`**********************************************************************************************`);
+// ____________________________________________________________________________________________________________
+
+console.log(`Округление до 2-х знаков после запятой`);
+
+// Этот метод Number.tofixed(n):
+
+// - результат приводится к типу «String»;
+// - если передаваемый аргумент больше количества знаков после запятой, то метод добавит к результату нули.
+
+3.14159265359.toFixed(2); // "3.14"
+
+// Для приведения результата к типу «Number» используйте функцию «parseFloat».
+
+parseFloat(3.14159265359.toFixed(3)); // 3.142
+
+let a = 3.14785;
+let b = 5.4587;
+let result = a * b; // 17.183168795
+console.log(result); 
+
+let resTwo = parseFloat(result.toFixed(2)); // Округляем ДО ДВУХ ЗНАКОВ после запятой
+console.log(resTwo); // 17.18
+
+console.log(`**********************************************************************************************`);
+// __________________________________________________________________________________________________
+
+
+</script>
+
+  <input type="button" value="Удалить товар-data=11" name="delete-goods" class="del btn btn-outline-danger btn-sm" data="11">
+
+  <input type="button" value="- data=22" name="minus" class="btn btn-warning btn-sm" data="22">
+
+  <input type="button" value="+ data=33" name="plus" class="btn btn-success btn-sm" data="33">
+
+<script>
+
+console.log(`*Добавление/Удаление Значений по ЗАДАННОМУ КЛЮЧУ у ОБЪЕКТА basket1`);
+
+  var basket1 = {
+//Свойство(ключ)  Значение 
+//         key:   basket[key]
+              11: 5, // -> Полностью Удаляем пару Ключ-Значение по клику на кнопку(name="delete-goods")
+              22: 6, // -> Уменьшаем Значение по клику на кнопку(name="minus") -> 22: 5
+              33: 2, // -> Увеличиваем Значение по клику на кнопку(name="plus") -> 33: 3
+              55: 4 
+        };
+
+        let del_btn = document.querySelector(`[value="Удалить товар-data=11"]`); 
+        //data="11" == event.target.attributes.data.nodeValue -> (11)
+
+        let del_plus = document.querySelector(`[value="+ data=33"]`);
+        //data="33" == event.target.attributes.data.nodeValue -> (33)
+
+        let del_minus = document.querySelector(`[value="- data=22"]`);
+        //data="22" == event.target.attributes.data.nodeValue -> (22)
+
+        console.log(`Корзина исходные данные: `,basket1); // {11: 5, 22: 6, 33: 2, 55: 4}
+// ____________________________________________________________________________________________________________
+
+
+        document.onclick = function(event) { // по клику -> ПРОИСХОДИТ СОБЫТИЕ (напр. - Кликаем по кнопке - value="+") - КОТОРОЕ ГЕНЕРИРУЕТ -> event.target.attributes.(name.nodeValue / data.nodeValue)!!!!!
+
+        if (event.target.attributes.name != undefined) { // Чтобы мы работали только с объектами у которых ЕСТЬ атрибут name=".."
+          
+          console.log(event); // PointerEvent {isTrusted: true, pointerId: 1, width: 1, height: 1, pressure: 0, …}
+
+          console.log(event.target); // <input type="button" value="+" name="plus" class="btn btn-success btn-sm" data="33">
+
+          console.log(event.target.attributes.name.nodeValue); // plus
+
+          console.log(event.target.attributes.data.nodeValue); // 33
+// __________________________________________________________________________________
+//       Добавляем Значение [Ключа 33] - на ЕДЕНИЦУ: был 33: 2 -> стал 33: 3
+
+//        Так меняется Количество - ШТУК в корзине
+
+//         if-Конструкция (ПРОВЕРКА - ЧТО ИМЕННО ТА КНОПКА)- ОБЯЗАТЕЛЬНО!!!! - ИТНАЧЕ РАБОТАТЬ НЕ БУДЕТ!!!
+          if (event.target.attributes.name.nodeValue == `plus`) {
+
+//                                                33                                                33
+          basket1[event.target.attributes.data.nodeValue] =  basket1[event.target.attributes.data.nodeValue] + 1;
+
+//        basket1 ->  {11: 5, 22: 6, [33: 3], 55: 4}
+          console.log(`Корзина ПОСЛЕ МАНИПУЛЯЦИЙ: `,basket1);
+// ___________________________________________________________________________________
+       
+          }else if(event.target.attributes.name.nodeValue == `minus`){
+
+//       Уменьшаем Значение [Ключа 22] - на ЕДЕНИЦУ: был 22: 6 -> стал 22: 5
+//        Так меняется Количество - ШТУК в корзине    
+
+//       Кликаем по Кнопке: <input type="button" value="-" name="minus" class="btn btn-warning btn-sm" data="22">
+//       Это вызовет событие : event.target.attributes.data.nodeValue == 22
+
+//                                              22                                                 22
+         basket1[event.target.attributes.data.nodeValue] =  basket1[event.target.attributes.data.nodeValue] - 1;
+
+//       basket1 -> {11: 5, [22: 5], 33: 3, 55: 4}
+         console.log(`Корзина ПОСЛЕ МАНИПУЛЯЦИЙ: `,basket1);
+// ___________________________________________________________________________________
+
+          }else if(event.target.attributes.name.nodeValue == `delete-goods`){
+
+//       Удаляем пару Ключ-Значение: 11: 5
+//        Так Удаляется товар из корзины    
+
+//       Кликаем по Кнопке: 
+//    <input type="button" value="Удалить товар-data=11" name="delete-goods" class="del btn btn-outline-danger btn-sm" data="11">
+
+//       Это вызовет событие : event.target.attributes.data.nodeValue == 11
+
+//                                                      11
+         delete basket1[event.target.attributes.data.nodeValue]; //Удаляем пару Ключ-Значение из Объекта-basket1
+
+//       basket1 -> {[22: 5], [33: 3], 55: 4}
+         console.log(`Корзина ПОСЛЕ МАНИПУЛЯЦИЙ: `,basket1);
+          }; 
+        };
+      };
+
+console.log(`**********************************************************************************************`);  
+// ____________________________________________________________________________________________________________
+
+console.log(`Пишем ПОИСК ИМЕН (name:) в ОБЪЕКТЕ`);     
+
+let goods2 = {
+        // ОбЪЕКТ-ОБЪЕКТОВ
+        11: {
+              articul: "a001",
+              category: "one",
+              name: "Яблоки",
+              image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Apple.png",
+              cost: 12.89,
+              description: "Сочные спелые",
+              kg: 20,
+              show: 1
+            },
+        22: {
+              articul: "a002",
+              category: "one",
+              name: "Груши",
+              image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Pear.png",
+              cost: 44.99,
+              description: "Очень вкусные",
+              kg: 34,
+              show: 1
+            },
+        33: {
+              articul: "a003",
+              category: "two",
+              name: "Лимоны",
+              image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Lemon.png",
+              cost: 64.95,
+              description: "Кислые, но прикольные",
+              kg: 543,
+              show: 1
+            },
+        44: {
+              articul: "a004",
+              category: "two",
+              name: "Вишни",
+              image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Cherry.png",
+              cost: 20.25,
+              description: "Ну просто прелесть",
+              kg: 12,
+              show: 1
+            },
+        55: {
+              articul: "a005",
+              category: "two",
+              name: "Абрикосы",
+              image: "https://cdn0.iconfinder.com/data/icons/fruits/128/Apricot.png",
+              cost: 66.95,
+              description: "Классные",
+              kg: 77,
+              show: 1
+            } 
+};
+
+console.log(goods2); // {11: {…}, 22: {…}, 33: {…}, 44: {…}, 55: {…}}
+
+function objShowNames() {
+  let tmp = [];
+
+  for (let key in goods2) {
+    console.log(key);// 11, 22, 33, 44, 55
+    let items = goods2[key][`name`]; // Яблоки, Груши, Лимоны, Вишни, Абрикосы  
+    tmp.push(items); // в цикле => загоняем их в массив
+
+    if (items == `Яблоки`) {
+      console.log(`Есть такой товар`);
+    }else{
+      console.log(`Такого товара нет`);
+    };
+  }; 
+  return tmp; // ['Яблоки', 'Груши', 'Лимоны', 'Вишни', 'Абрикосы'] 
+};
+
+console.log(objShowNames()); // Вызывая ф-цию, мы передаем сформированный этой ф-цией МАССИВ ДАННЫХ-с которыми будем работать
+
+console.log(`**********************************************************************************************`);  
+
+// ____________________________________________________________________________________________________
+console.log(`Выводим товар на экран из массива responseData`);
+// shop-field
+ let shopField = document.querySelector(`.shop-field`);
+ console.log(shopField);
+
+ responseData.forEach(function ({id, articul, category, name, image, cost, description, kg, show}, index) {
+  shopField.innerHTML = shopField.innerHTML +  `<div class="col-md-4 text-center col">
+                                                  <div class="goods">
+                                                    <p class="names"><b>${name}</b></p> 
+                                                    <p class="desc">${description}</p>
+                                                    <p><img src="${image}"></p>
+                                                    <p class="cost">Цена: ${cost} грн/кг</p>  
+                                                    <p>На складе: ${kg} кг</p>  
+                          <p><input class="btn btn-success" type="button" value="В корзину" name="add-to-basket" data="${id}"></p>
+                                                  </div>
+                                                </div>`
+ });
+
+ console.log(`**********************************************************************************************`);       
+
+//  _________________________________________________________________
+console.log(`Метод search - Возвращает ИНДЕКС РЕГУЛЯРНОГО ВЫРАЖЕНИЯ в строке, или -1`);
+//            01234
+ let elem1 = `Lorem`;
+  let val1 = `re`
+
+  let res = elem1.search(val1); // Возвращает ИНДЕКС РЕГУЛЯРНОГО ВЫРАЖЕНИЯ в строке, или -1
+  console.log(`Индекс РЕГУЛЯРНОГО ВЫРАЖЕНИЯ в строке = ${res}`); //re - начинается с ИНДЕКСА => 2
+
+  console.log(`**********************************************************************************************`); 
+// ___________________________________________________________________
+
+console.log(`Вынимаем НАЗВАНИЯ ТОВАРА из БЛОКОВ  <div class="goods"> в ОДНОМ ЦИКЛЕ по БЛОКУ <div class="goods">`);
+
+  let elasticItems = document.querySelectorAll(`.goods`); 
+
+  elasticItems.forEach((element)=>{
+      console.log(element); // Весе БЛОКИ  <div class="goods">
+      console.log(element.firstChild.nextSibling);// <p class="names">...</p> - которые содержат НАЗВАНИЯ ТОВАРА 
+      console.log(element.firstChild.nextSibling.innerText); // Сами НАЗВАНИЯ ТОВАРА - 'Яблоки', 'Груши', 'Лимоны', 'Вишни', 'Абрикосы' 
+    });
+// ____________________________________________________________________________________________
+    console.log(`**********************************************************************************************`); 
+
+
+console.log(`Пишем ПОИСКОВИК (строка поиска) товаров`);
+
+ document.querySelector(`.elastic`).oninput = function () {
+    let val = this.value.trim(); //.trim() - обрезка ПРОБЕЛОВ (можно вводить с пробелами)
+
+    if (val != '') { // Если поле input НЕ ПУСТОЕ !!!
+      elasticItems.forEach((element)=>{// Весе БЛОКИ  <div class="goods">
+        if (element.firstChild.nextSibling.innerText.search(val) == -1) { // т.е. НАЗВАНИЯ ТОВАРА (стр.593) не содержат букв, набранных в Строке ПОИСКА
+          element.classList.add(`hide`); // добавляем сласс hide (стр.62)
+        }else{
+          element.classList.remove(`hide`);
+        };
+      });  
+    }else{ // Если поле input ПУСТОЕ !!! - снова перебираем Весе БЛОКИ  <div class="goods"> и убираем сласс hide
+      elasticItems.forEach((element)=>{
+          element.classList.remove(`hide`);
+      });
+    };
+ };
+
+console.log(`**********************************************************************************************`); 
+
+// ____________________________________________________________________________________________________
+let obj_One = {
+  color: `white`,
+  engine: 2
+};
+// Метод Object.keys() -  Возвращает МАССИВ из Свойств(КЛЮЧЕЙ)  - Переданного ОБЕКТА, в том же порядке, в котором они бы обходились циклом for...in.
+
+var arrayKeys = Object.keys(obj_One);
+console.log(arrayKeys); //  ['color', 'engine']
+
+// __________Если ОБЪЕКТ ПУСТОЙ, то arrayKeys.lengh == 0  (и если МАССИВ ПУСТОЙ, то его длинна == 0)____________.
+ let arrayKeysLengh = arrayKeys.length;
+ console.log(`Длинна МАССИВА из Свойств(КЛЮЧЕЙ) Объекта = ${arrayKeysLengh}`); // 2
+
+ console.log(`**********************************************************************************************`); 
+//  ________________________________________________________________________________
+console.log(`Проверка того, что ОБЪЕКТ ПУСТОЙ`); 
+
+let obj_Two = {};
+
+if (Object.keys(obj_Two).length == 0) {
+  console.log(`obj_Two ПУСТОЙ`);
+}else{
+  console.log(`obj_Two содержит элементы`);
+};
+
+console.log(`**********************************************************************************************`); 
+ </script>
+</body>
+</html>
